@@ -9,17 +9,12 @@ class CalcaulatorTest {
 
     @ParameterizedTest
     @CsvSource(value = [
-        "2:3:+:5",
-        "2:7:*:14",
-        "9:3:/:3",
-        "5:2:-:3"
+        "2+3:5",
+        "2*7:14",
+        "9/3:3",
+        "5-2:3"
     ], delimiter = ':')
-    fun create_calculator(left : Long, right : Long, operator: Operator,result : Long){
-        assertEquals(
-            Calculator(
-            left,
-            right,
-            operator
-        ).compute(), result)
+    fun create_calculator(expression: String, result : Long){
+        assertEquals(Calculator(expression).compute(), result)
     }
 }

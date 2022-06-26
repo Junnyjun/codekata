@@ -12,7 +12,7 @@ class operatorTest {
         "5:2:7"
     ], delimiter = ':')
     fun plusTest(left : Long, right : Long, result : Long){
-        assertEquals(result, Operator.PLUS.result.apply(left,right))
+        assertEquals(result, Operators.PLUS.func(left, right))
     }
 
     @ParameterizedTest
@@ -21,7 +21,7 @@ class operatorTest {
         "9:2:7"
     ], delimiter = ':')
     fun minusTest(left : Long, right : Long, result : Long){
-        assertEquals(result, Operator.MINUS.result.apply(left,right))
+        assertEquals(result, Operators.MINUS.func(left, right))
     }
     @ParameterizedTest
     @CsvSource(value = [
@@ -29,7 +29,7 @@ class operatorTest {
         "9:2:18"
     ], delimiter = ':')
     fun multiplyTest(left : Long, right : Long, result : Long){
-        assertEquals(result, Operator.MULTIPLY.result.apply(left,right))
+        assertEquals(result, Operators.MULTIPLY.func(left, right))
     }
     @ParameterizedTest
     @CsvSource(value = [
@@ -37,6 +37,18 @@ class operatorTest {
         "9:3:3"
     ], delimiter = ':')
     fun divideTest(left : Long, right : Long, result : Long){
-        assertEquals(result, Operator.DIVIDE.result.apply(left,right))
+        assertEquals(result, Operators.DIVIDE.func(left, right))
     }
+
+    @ParameterizedTest
+    @CsvSource(value = [
+        "*:MULTIPLY",
+        "-:MINUS",
+        "/:DIVIDE",
+        "+:PLUS"
+    ], delimiter = ':')
+    fun findOperator(oerator: String, operators: Operators){
+        assertEquals(findOperator(oerator, operators), operators)
+    }
+
 }
