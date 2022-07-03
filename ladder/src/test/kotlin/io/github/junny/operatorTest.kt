@@ -47,8 +47,8 @@ class operatorTest {
         "/:DIVIDE",
         "+:PLUS"
     ], delimiter = ':')
-    fun findOperator(oerator: String, operators: Operators){
-        assertEquals(findOperator(oerator, operators), operators)
+    fun findOperatorTest(operator: Char, operators: Operators){
+        assertEquals( Operators.findOperator(operator), operators)
     }
 
 }
