@@ -51,4 +51,5 @@ class operatorTest {
         assertEquals( Operators.findOperator(operator), operators)
     }
 
+    
 }
