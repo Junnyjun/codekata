@@ -7,7 +7,7 @@ public enum OperandEnum {
     PLUS("+", (left, right) -> left + right),
     MINUS("-", (left, right) -> left - right),
     DIVIDE("/", (left, right) -> left / right),
-    MULYIPLY("*", (left, right) -> left * right);
+    MULTIPLY("*", (left, right) -> left * right);
 
     private final String code;
     private final BinaryOperator<Integer> operation;
