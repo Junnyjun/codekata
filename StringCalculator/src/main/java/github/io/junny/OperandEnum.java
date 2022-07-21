@@ -26,8 +26,8 @@ public enum OperandEnum {
                 .orElseThrow(() -> new IllegalArgumentException("유요한 연산자가 아닙니다"));
     }
 
-    public static int operation(String code, int left, int right){
-        return find(code).operation.apply(left, right);
+    public static int operation(String code, String left, String right){
+        return find(code).operation.apply(Integer.parseInt(left), Integer.parseInt(right));
     }
 
 }

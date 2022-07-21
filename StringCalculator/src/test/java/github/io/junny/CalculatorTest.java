@@ -15,7 +15,7 @@ public class CalculatorTest {
             "6:*:5:30",
             "15:/:3:5"
     },delimiter = ':')
-    void 값_계산_검증(Integer left, String operator, Integer right, Integer result){
+    void 값_계산_검증(String left, String operator, String right, Integer result){
         Assertions.assertThat(operation(operator,left,right)).isEqualTo(result);
     }
 }
