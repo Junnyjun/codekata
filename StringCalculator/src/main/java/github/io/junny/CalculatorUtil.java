@@ -17,7 +17,7 @@ public class CalculatorUtil {
         return expression;
     }
 
-    public void isOperand(String operand){
+    private void isOperand(String operand){
         Matcher matcher = OPERAND_REGEX.matcher(operand);
         if(!matcher.find()){
             throw new IllegalArgumentException("유효한 값이 아닙니다");

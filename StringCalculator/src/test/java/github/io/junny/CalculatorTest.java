@@ -4,10 +4,13 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static github.io.junny.OperandEnum.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collector;
 
-public class CalculatorTest {
+import static java.util.Arrays.asList;
 
+class CalculatorTest {
     @ParameterizedTest
     @CsvSource(value = {
             "2:+:3:5",
@@ -15,7 +18,10 @@ public class CalculatorTest {
             "6:*:5:30",
             "15:/:3:5"
     },delimiter = ':')
-    void 값_계산_검증(String left, String operator, String right, Integer result){
-        Assertions.assertThat(operation(operator,left,right)).isEqualTo(result);
+    void 값_계산_검증(String left, String operator, String right, String result){
+        String[] split = new String[]{left,operator,right};
+
+        Calculator calculator = new Calculator(split);
+        Assertions.assertThat(calculator.addOperand()).isEqualTo(result);
     }
 }

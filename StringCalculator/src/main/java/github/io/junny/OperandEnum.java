@@ -3,6 +3,8 @@ package github.io.junny;
 import java.util.EnumSet;
 import java.util.function.BinaryOperator;
 
+import static java.lang.Integer.parseInt;
+
 public enum OperandEnum {
     PLUS("+", (left, right) -> left + right),
     MINUS("-", (left, right) -> left - right),
@@ -18,7 +20,7 @@ public enum OperandEnum {
         this.operation = operation;
     }
 
-    private static OperandEnum find(String code){
+    public static OperandEnum find(String code){
         return EnumSet.allOf(OperandEnum.class)
                 .stream()
                 .filter(c -> c.code.equals(code))
@@ -26,8 +28,8 @@ public enum OperandEnum {
                 .orElseThrow(() -> new IllegalArgumentException("유요한 연산자가 아닙니다"));
     }
 
-    public static int operation(String code, String left, String right){
-        return find(code).operation.apply(Integer.parseInt(left), Integer.parseInt(right));
+    public int operation(String left, String right){
+        return this.operation.apply(parseInt(left), parseInt(right));
     }
 
 }
