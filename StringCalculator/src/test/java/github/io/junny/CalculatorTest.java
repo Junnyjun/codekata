@@ -1,6 +1,7 @@
 package github.io.junny;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -24,4 +25,13 @@ class CalculatorTest {
         Calculator calculator = new Calculator(split);
         Assertions.assertThat(calculator.addOperand()).isEqualTo(result);
     }
+
+
+    @Test
+    void asdf(){
+        for (int i = 0; i < 10; i++) {
+            System.out.println("i = " + i);
+        }
+    }
+
 }
