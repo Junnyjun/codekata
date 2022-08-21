@@ -8,5 +8,7 @@
     <mapping directory="$PROJECT_DIR$/cryptLevelMeter" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/cryptLevelMeter-java" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/demo" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/demo1" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/websocket" vcs="Git" />
   </component>
 </project>
