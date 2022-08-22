@@ -2,39 +2,43 @@ package github.io.junny;
 
 import java.util.ArrayList;
 
-import static java.lang.Thread.sleep;
-import static java.util.concurrent.ThreadLocalRandom.current;
-
 public class Main {
-    static ArrayList<String> array = new ArrayList<>();
+
     public static void main(String[] args) {
 
-        Thread thread = new NewThread();
-        thread.start();
+        OutOfMemoryList list = new OutOfMemoryList();
 
-        while (true){
-            try {
-                sleep(500L);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-            array.add("add after: " + current().nextInt() );
-            System.out.println("add after: " + array.toString());
-
+        for (int i = 0; i < 10; i++) {
+            list.add(i);
+            list.remove(i);
         }
+//        IntStream.range(0, 10)
+//                .forEach(element -> {
+//                    list.add(element);
+//                    list.remove(element);
+//                });
+
+        list.get(9);
     }
-    static class NewThread extends Thread{
-        @Override
-        public void run() {
-            while (true){
-                try {
-                    sleep(1500L);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-                array.removeAll(array);
-                System.out.println("removed after: " + array.toString());
-            }
-        }
+
+}
+
+class OutOfMemoryList {
+    private ArrayList<String> list = new ArrayList<>();
+
+    public void add(int value) {
+        list.add(new String("ABCDEFGHQWERTZXCV" + value));
+    }
+
+    public void remove(int value) {
+        String s = list.get(value);
+        s = null;
+    }
+
+    public void get(int value) {
+        Object data = list.get(value);
+
+        System.out.println("data = " + data);
     }
 }
+
